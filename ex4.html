@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorveteria 4Migas</title>
+</head>
+
+<body>
+    <h2>Sorveteria 4Migas</h2>
+    Valor por grama de sorvete: <input id="in_valor"> <br><br>
+
+    Peso do sorvete: <input id="in_peso"> <br><br>
+
+    Tipo de cobertura:  <input id="in_cobertura"> <br><br>
+
+    Tipo de sorvete: <input id="in_tipo"> <br><br>
+
+    <button onclick="calcular()">Calcular custo</button><br>
+    <div id="div_resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function calcular(){
+        var valor = Number(in_valor.value)
+        var peso = Number(in_peso.value)
+        var cobertura = in_cobertura.value
+        var tipo = in_tipo.value
+        var precoFinal
+
+        if (tipo == 'G'){
+            precoFinal = peso * (valor * 1.11)
+        } else {
+            precoFinal = peso * (valor * 0.9)
+        }
+
+        if (cobertura != 'C'){
+            precoFinal = precoFinal + peso * 0.01
+        }
+
+        if (precoFinal > 10){
+            div_resultado.innerHTML = `<div style= "color: green">O seu sorvete vai custar R$${precoFinal} e vai comprometer a mesada</div>`
+        } else {
+            div_resultado.innerHTML = `<div style= "color: blue">Hoje você está maneirando hoje, gastou somente R$${precoFinal}</div>`
+        }
+    }
+</script>
